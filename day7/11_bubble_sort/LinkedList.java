@@ -14,7 +14,7 @@ public class LinkedList {
 		if (start == null) {
 			start = newInt;
 		} else {
-			start.intAddInt(newInt);
+			start.addInt(newInt);
 		}
 	}
 
@@ -22,9 +22,10 @@ public class LinkedList {
 		start.printList(start);
 	}
 
-	public void listBubbleSort() {
+	public LinkedList bubbleSort() {
 		boolean swapped = false;
 		int pass = 0;
-		start.intBubbleSort(pass, swapped, this);
+		start.bubbleSort(pass, swapped, this);
+		return this;
 	}
 }

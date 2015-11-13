@@ -9,12 +9,12 @@ public class LinkedInt {
 		this.last = null;
 	}
 
-	public void intAddInt(LinkedInt newInt) {
+	public void addInt(LinkedInt newInt) {
 		if (next == null) {
 			next = newInt;
 			newInt.setLast(this);
 		} else {
-			next.intAddInt(newInt);
+			next.addInt(newInt);
 		}
 	}
 
@@ -45,65 +45,39 @@ public class LinkedInt {
 		System.out.println("------------");
 	}
 	
-	public void intBubbleSort(int pass, boolean swapped, LinkedList list) {
+	public void bubbleSort(int pass, boolean swapped, LinkedList list) {
 		pry(swapped, list, "A", pass);
 		if (next == null) {
 			pass++;
 			pry(swapped, list, "B", pass);
 			if (swapped) {
 				swapped = false;
-				list.getStart().intBubbleSort(pass, swapped, list);
-			} else {
-				// finish
+				list.getStart().bubbleSort(pass, swapped, list);
 			}
-		} else if ( this == list.getStart() && value > next.getValue()) {
-			pry(swapped, list, "C", pass);
-			startSwap(list);
-			swapped = true;
-			this.intBubbleSort(pass, swapped, list);
 		}  else if (value > next.getValue()) {
 			pry(swapped, list, "D", pass);
-			swap();
+			swap(list);
 			swapped = true;
-			this.intBubbleSort(pass, swapped, list);
+			this.bubbleSort(pass, swapped, list);
 		} else {
 			pry(swapped, list, "E", pass);
-			next.intBubbleSort(pass, swapped, list);
-		}
-	}
-	
-	public void startSwap(LinkedList list) {
-		if (next.getNext() != null) {
-			LinkedInt tempNextNext = next.getNext();
-			list.setStart(next);
-			next.setLast(null);
-			next.setNext(this);
-			last = next;
-			next = tempNextNext;
-			next.setLast(this);
-		} else {
-			list.setStart(next);
-			next.setLast(null);
-			next.setNext(this);
-			next = null;
+			next.bubbleSort(pass, swapped, list);
 		}
 	}
 
-	public void swap() {
-		if ( next.getNext() != null ) {
-			LinkedInt tempNextNext = next.getNext();
-			last.setNext(next);
-			next.setLast(last);
-			last = next;
-			next.setNext(this);
-			next = tempNextNext;
-			next.setLast(this);
+	public void swap(LinkedList list) {
+		LinkedInt tempNextNext = next.getNext();
+		if (last == null) {
+			list.setStart(next);
 		} else {
 			last.setNext(next);
-			next.setLast(last);
-			last = next;
-			next.setNext(this);
-			next = null;
+		}
+		next.setLast(last);
+		last = next;
+		next.setNext(this);
+		next = tempNextNext;
+		if (next!=null) {
+			next.setLast(this);
 		}
 	}
 

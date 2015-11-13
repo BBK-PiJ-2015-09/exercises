@@ -9,8 +9,7 @@ public class ListUtilities {
 	}
 	
 	public static LinkedList bubbleSort(LinkedList list) {
-		list.listBubbleSort();
-		return list;
+		return list.bubbleSort();
 	}
 	
 }
