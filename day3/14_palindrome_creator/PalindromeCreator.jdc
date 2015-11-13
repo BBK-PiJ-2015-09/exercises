@@ -1,0 +1,11 @@
+println("Please enter your string: ");
+String str = System.console().readLine();
+String outputStr = str;
+int counter = 0;
+
+while (counter < str.length()) {
+	outputStr = outputStr + str.charAt(str.length()-1-counter);
+	counter++;
+}
+
+println(outputStr);

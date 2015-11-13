@@ -1,0 +1,55 @@
+Point point_a = new Point();
+Point point_b = new Point();
+Point point_c = new Point();
+
+print("Please enter point a's x value: ");
+String str = System.console().readLine();
+point_a.x = Integer.parseInt(str);
+print("Please enter point a's y value: ");
+str = System.console().readLine();
+point_a.y = Integer.parseInt(str);
+print("Please enter point b's x value: ");
+str = System.console().readLine();
+point_b.x = Integer.parseInt(str);
+print("Please enter point b's y value: ");
+str = System.console().readLine();
+point_b.y = Integer.parseInt(str);
+print("Please enter point c's x value: ");
+str = System.console().readLine();
+point_c.x = Integer.parseInt(str);
+print("Please enter point c's y value: ");
+str = System.console().readLine();
+point_c.y = Integer.parseInt(str);
+
+Double ab = distance(point_a, point_b);
+Double bc = distance(point_b, point_c);
+Double ac = distance(point_a, point_c);
+
+println("The closest points are: ");
+
+if (ab < bc) {
+	if (ab < ac) {
+		println("point_a");
+		println("point_b");
+	} else {
+		println("point_a");
+		println("point_c");
+	}
+} else {
+	if (bc < ac) {
+		println("point_b");
+		println("point_c");
+	} else {
+		println("point_a");
+		println("point_c");
+	}
+}
+
+Double distance(Point a, Point b) {
+	return Math.sqr((a.x - b.x) * (a.x - b.x)) + ((a.y - b.y) * (a.y - b.y));
+}
+
+class Point {
+	double x;
+	double y;
+}

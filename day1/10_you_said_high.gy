@@ -1,0 +1,25 @@
+print 'Please enter a number: ';
+string = System.console().readLine();
+number = Integer.parseInt(string);
+last_number = number;
+consecutive = true;
+going_up = true;
+going_down = true;
+while (number != -1) { 
+	print 'Please enter another number (-1 to finish): ';
+	string = System.console().readLine();
+	number = Integer.parseInt(string);
+	if (number == -1) {
+		break;
+	}else if (number == last_number + 1 && going_up == true) {
+		going_down = false;
+		last_number = number;
+	}else if ( number == last_number -1 && going_down == true) {
+		going_up = false;
+		last_number = number;
+	}else{
+		consecutive = false;
+		last_number = number;
+	};
+};
+println "The numbers were${consecutive ? '' : ' not'} consecutive!"

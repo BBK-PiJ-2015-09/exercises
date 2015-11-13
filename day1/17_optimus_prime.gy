@@ -1,0 +1,68 @@
+print 'Please enter a number: ';
+String str = System.console().readLine();
+int number = Integer.parseInt(str);
+
+int lowerPrime = 0;
+int higherPrime = 0;
+int counter = number+1;
+int divisor;
+Boolean is_prime;
+Boolean going_down = true;
+
+Boolean negative;
+
+if (number == 0) {
+	println '-1';
+	println '1';
+} else {
+	if ( number < 0 ) {
+		negative = true;
+	} else {
+		negative = false;
+	}
+
+	if (negative) {
+		number = -number;
+	}
+
+	while ( lowerPrime == 0 || higherPrime == 0) {
+		if (going_down) {
+			counter--;
+		} else {
+			counter++;
+		}
+		divisor = counter-1;
+		is_prime = true;
+		while (divisor > 1) {
+			if(counter % divisor == 0) {
+				is_prime = false;
+				break;
+			}
+			divisor--;
+		}
+		if (is_prime && going_down) {
+			lowerPrime = counter;
+			going_down = false;
+			counter = number;
+		} else if (is_prime) {
+			higherPrime = counter;
+		}
+	}
+
+	int lowerDistance = number - lowerPrime;
+	int higherDistance = higherPrime - number;
+
+	if (negative) {
+		lowerPrime = -lowerPrime;
+		higherPrime = -higherPrime;
+	}
+
+	if (lowerDistance == higherDistance || lowerDistance < higherDistance){
+		println lowerPrime;
+	} else if (higherDistance < lowerDistance) {
+		println higherPrime;
+	} else {
+		println lowerPrime;
+		println higherPrime;
+	} 
+}

@@ -1,0 +1,13 @@
+print 'Please enter a number: ';
+string = System.console().readLine();
+number = Integer.parseInt(string);
+max = number;
+while (number != -1) { 
+	print 'Please enter another number (-1 to finish): ';
+	string = System.console().readLine();
+	number = Integer.parseInt(string);
+	if (number > max) {
+		max = number;
+	};
+};
+println "The highest number was ${max}!"

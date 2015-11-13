@@ -1,0 +1,16 @@
+println("Please enter your string: ");
+String str = System.console().readLine();
+boolean strictPalindrome;
+int counter = 0;
+
+while (counter < str.length() && str.charAt(counter) == str.charAt(str.length()-1-counter)) {
+	counter++;
+}
+
+if (counter == str.length()){
+	strictPalindrome = true;
+} else {
+	strictPalindrome = false;
+}
+
+println(str + (strictPalindrome ? " is" : " is not") + " a strict palindrome!");

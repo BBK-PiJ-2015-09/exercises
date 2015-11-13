@@ -1,0 +1,7 @@
+double dividend = 5;
+double divisor = 2;
+if ( ( dividend % divisor ) == 0) {
+	println("It's divisible!");
+} else {
+	println("It's not divisible!");
+}

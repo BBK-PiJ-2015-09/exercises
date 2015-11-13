@@ -1,0 +1,47 @@
+print 'Please enter the first number: ';
+String str = System.console().readLine();
+Integer fn = Integer.parseInt(str);
+print 'Please enter the second number: ';
+str = System.console().readLine();
+sn = Integer.parseInt(str);
+print 'Please enter the third number: ';
+str = System.console().readLine();
+tn = Integer.parseInt(str);
+
+Integer lowest;
+Integer middle;
+Integer highest;
+
+if (fn > sn) {
+	if (fn > tn) {
+		highest = fn;
+		if (sn > tn) {
+			middle = sn;
+			lowest = tn;
+		} else {
+			middle = tn;
+			lowest = sn;
+		}
+	} else {
+		lowest = sn;
+		middle = fn;
+		highest = tn;
+	}
+} else {
+	if (sn > tn) {
+		highest = sn;
+		if (fn > tn) {
+			middle = fn;
+			lowest = tn;
+		} else {
+			middle = tn;
+			lowest = fn;
+		}
+	} else {
+		highest = tn;
+		middle = sn;
+		lowest = fn;
+	}
+}
+
+println lowest + ', ' + middle + ', ' + highest;

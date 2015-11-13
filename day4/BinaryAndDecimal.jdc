@@ -1,0 +1,22 @@
+println(power(2,4));
+println(power2(2));
+
+
+int power(int base, int exponent) {
+	int result = 0;
+	while (exponent > 0) {
+		result += (base * base);
+		exponent--;
+	}
+	return result;
+}
+
+
+int power2(int exponent) {
+	return power(exponent, exponent);
+}
+
+
+int binary2decimal(int binary) {
+	
+}

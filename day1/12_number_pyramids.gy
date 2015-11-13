@@ -1,0 +1,16 @@
+println 'How high would you like your pyramid?'
+String str = System.console().readLine();
+Integer max = Integer.parseInt(str);
+
+Integer number = 1;
+Integer counter;
+
+while ( number <= max ) {
+	counter = number;
+	while ( counter > 0 ) {
+		print number;
+		counter--;
+	}
+	number++;
+	println '';
+}

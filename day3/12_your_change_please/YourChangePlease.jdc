@@ -1,0 +1,41 @@
+println("Please enter the total cost: ");
+String str = System.console().readLine();
+double totalCost = Double.parseDouble(str);
+
+println("Please enter the total paid: ");
+str = System.console().readLine();
+double totalPaid = Double.parseDouble(str);
+
+Change changeDue = new Change();
+changeDue.total = totalPaid - totalCost;
+
+println("The ideal change is: ");
+
+denominationCheck(changeDue, 20, "£20");
+denominationCheck(changeDue, 10, "£10");
+denominationCheck(changeDue, 5, "£5");
+denominationCheck(changeDue, 2, "£2");
+denominationCheck(changeDue, 1, "£1");
+denominationCheck(changeDue, 0.50, "50p");
+denominationCheck(changeDue, 0.20, "20p");
+denominationCheck(changeDue, 0.10, "10p");
+denominationCheck(changeDue, 0.05, "5p");
+denominationCheck(changeDue, 0.02, "2p");
+denominationCheck(changeDue, 0.01, "1p");
+
+println("");
+
+void denominationCheck(Change changeDue, double denomination, String name) {
+	while (changeDue.total >= denomination || Math.abs(denomination - changeDue.total) < 0.005) {
+		makeChange(changeDue, denomination, name);
+	}
+}
+
+void makeChange(Change changeDue, double change, String name) {
+	print(name + " ");
+	changeDue.total = changeDue.total - change;
+}
+
+class Change {
+	double total;
+}

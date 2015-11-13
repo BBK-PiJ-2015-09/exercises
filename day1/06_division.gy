@@ -1,0 +1,42 @@
+print 'Please enter the dividend: ';
+String str = System.console().readLine();
+Integer dividend = Integer.parseInt(str);
+print 'Please enter the divisor: ';
+str = System.console().readLine();
+Integer divisor = Integer.parseInt(str);
+
+while (divisor == 0) {
+	print 'Cannot divide by zero, please enter another divisor: ';
+	str = System.console().readLine();
+	divisor = Integer.parseInt(str);
+}
+
+Integer abs_dividend
+
+if ( dividend >= 0 ) {
+	abs_dividend = dividend;
+} else {
+	abs_dividend =  -dividend;
+}
+
+Integer abs_divisor;
+
+if ( divisor > 0 ) {
+	abs_divisor = divisor;
+} else {
+	abs_divisor = -divisor;
+}
+
+Integer quotient = 0;
+
+while ((abs_dividend - abs_divisor) >= 0) {
+	abs_dividend = abs_dividend - abs_divisor;
+	quotient++;
+}
+
+if ( (dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0) ) {
+	quotient = -quotient;
+	abs_dividend = -abs_dividend;
+}
+
+println dividend + ' divided by ' + divisor + ' is ' + quotient + ', remainder ' + abs_dividend + '.';

@@ -1,0 +1,4 @@
+i is visible from line 09 to line 18
+j is visible from line 10 to line 16
+newSize is visible from line 04 to line 06
+size is visible from line 02 to line 20

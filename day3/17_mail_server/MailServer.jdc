@@ -1,0 +1,186 @@
+println("Welcome to My Mail Server!");
+
+print(">>> ");
+String returnAddress = System.console().readLine();
+
+while (!validReturn(returnAddress) || !validEmail(returnAddress)) {
+	if (!validReturn(returnAddress)) {
+		println("Invalid command.");
+	}
+	if (!validEmail(returnAddress)) {
+		println("Invalid email address.");
+	}
+	print(">>> ");
+	returnAddress = System.console().readLine();
+}
+
+println("OK");
+
+print(">>> ");
+String destinationAddress = System.console().readLine();
+
+while (!validDestination(destinationAddress) || !validDestinationEmail(destinationAddress)) {
+	if (!validDestination(destinationAddress)) {
+		println("Invalid command.");
+	}
+	if (!validDestinationEmail(destinationAddress)) {
+		println("Invalid email address.");
+	}
+	print(">>> ");
+	destinationAddress = System.console().readLine();
+}
+
+println("OK");
+
+print(">>> ");
+String dataCommand = System.console().readLine();
+
+while (!validDataCommand(dataCommand)) {
+	if (!validDataCommand(dataCommand)) {
+		println("Invalid command.");
+	}
+	print(">>> ");
+	dataCommand = System.console().readLine();
+}
+
+String emailLine = System.console().readLine();
+String emailBody = "";
+
+while (emailLine.charAt(0) != '.') {
+	emailBody = emailBody + "\n";
+	emailBody = emailBody + emailLine;
+	emailLine = System.console().readLine();
+}
+
+println("Sending email...");
+print("from: ");
+println(returnAddress.substring(10,returnAddress.length()));
+print("to: ");
+println(destinationAddress.substring(8, destinationAddress.length()));
+println(emailBody);
+println("...done!");
+
+String str = "";
+
+while (!quit(str)) {
+	print(">>> ");
+	str = System.console().readLine();
+}
+
+println("Bye!");
+
+Boolean quit(String command) {
+	if (command.length() < 4) {
+		return false;
+	} else if (
+		command.charAt(0) == 'Q' &&
+		command.charAt(1) == 'U' &&
+		command.charAt(2) == 'I' &&
+		command.charAt(3) == 'T'
+	) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+Boolean validReturn(String command) {
+	if (command.length() < 10) {
+		return false;
+	} else if (
+		command.charAt(0) == 'M' &&
+		command.charAt(1) == 'A' &&
+		command.charAt(2) == 'I' &&
+		command.charAt(3) == 'L' &&
+		command.charAt(4) == ' ' &&
+		command.charAt(5) == 'F' &&
+		command.charAt(6) == 'R' &&
+		command.charAt(7) == 'O' &&
+		command.charAt(8) == 'M' &&
+		command.charAt(9) == ':'
+	) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+Boolean validDestination(String command) {
+	if (command.length() < 8) {
+		return false;
+	}
+	else if(
+		command.charAt(0) == 'R' &&
+		command.charAt(1) == 'C' &&
+		command.charAt(2) == 'P' &&
+		command.charAt(3) == 'T' &&
+		command.charAt(4) == ' ' &&
+		command.charAt(5) == 'T' &&
+		command.charAt(6) == 'O' &&
+		command.charAt(7) == ':'
+	) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+Boolean validDataCommand(String command) {
+	if (command.length() < 4) {
+		return false;
+	}
+	else if(
+		command.charAt(0) == 'D' &&
+		command.charAt(1) == 'A' &&
+		command.charAt(2) == 'T' &&
+		command.charAt(3) == 'A'
+	) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+Boolean validEmail(String email) {
+	int counter = 11;
+	int atCounter = 0;
+	Boolean wrongPlaceAt = false;
+	while (counter < email.length()) {
+		if (counter == 0 || counter == email.length()-1) {
+			if (email.charAt(counter) == '@') {
+				wrongPlaceAt = true;
+			}
+		}
+		if (email.charAt(counter) == '@') {
+			atCounter++;
+		}
+		counter++;
+	}
+	if (!wrongPlaceAt && atCounter == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+Boolean validDestinationEmail(String email) {
+	int counter = 9;
+	int atCounter = 0;
+	Boolean wrongPlaceAt = false;
+	while (counter < email.length()) {
+		if (counter == 0 || counter == email.length()-1) {
+			if (email.charAt(counter) == '@') {
+				wrongPlaceAt = true;
+			}
+		}
+		if (email.charAt(counter) == '@') {
+			atCounter++;
+		}
+		counter++;
+	}
+	if (!wrongPlaceAt && atCounter == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}

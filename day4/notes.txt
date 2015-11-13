@@ -1,0 +1,5 @@
+Data in memory
+
+every time you call a method you create a new level in the stack and copy the parameters
+
+One level in the stack can NEVER access another level in the stack.

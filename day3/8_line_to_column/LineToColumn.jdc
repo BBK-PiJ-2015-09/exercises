@@ -1,0 +1,14 @@
+println("Please enter your text");
+String str = System.console().readLine();
+int counter = 0;
+
+while (counter < str.length()) {
+	if (str.charAt(counter) == ' ') {
+		println("");
+	} else {
+		print(str.charAt(counter));
+	}
+	counter++;
+}
+
+println("");

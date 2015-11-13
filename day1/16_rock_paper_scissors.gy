@@ -1,0 +1,47 @@
+int leftScore = 0;
+int rightScore = 0;
+
+String leftHand;
+String rightHand;
+
+println 'Valid results are PP, PR, PS, RP, RR, RS, SP, SR and SS.'
+while ( ((leftScore - rightScore) <= 3) && ((rightScore - leftScore) <= 3) ) {
+	while ( (leftHand != 'R' && leftHand != 'P' && leftHand != 'S') || (rightHand != 'R' && rightHand != 'P' && rightHand != 'S')) {
+		print 'Please enter a valid result: ';
+		str = System.console().readLine();
+		leftHand = str.substring(0,1);
+		rightHand = str. substring(1,2);
+	}
+
+	if ( leftHand == 'P') {
+		if ( rightHand == 'R') {
+			leftScore++;
+		} else if ( rightHand == 'S' ) {
+			rightScore++;
+		}
+	} else if ( leftHand == 'R' ) {
+		if ( rightHand == 'S') {
+			leftScore++;
+		} else if ( rightHand == 'P' ) {
+			rightScore++;
+		}
+	} else if ( leftHand == 'S' ) {
+		if ( rightHand == 'P') {
+			leftScore++;
+		} else if ( rightHand == 'R' ) {
+			rightScore++;
+		}
+	}
+
+	leftHand = null;
+	rightHand = null;
+}
+
+println 'Left has ' + leftScore + ' points!';
+println 'Right has ' + rightScore + ' points!';
+
+if (leftScore > rightScore) {
+	println 'Left wins!';
+} else {
+	println 'Right wins!';
+}

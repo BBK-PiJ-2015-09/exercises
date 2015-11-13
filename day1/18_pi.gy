@@ -1,0 +1,52 @@
+print 'Please enter how many digits of pi you need: '
+String str = System.console().readLine();
+int number_of_digits = Integer.parseInt(str);
+
+Double pi = 0;
+String pi_string;
+int digits_so_far = 2;
+int divisor;
+int n = 0;
+
+print 'digits';
+print ' ' * (number_of_digits - 5);
+print 'pi';
+print ' ' * number_of_digits;
+println 'terms';
+
+while (digits_so_far <= number_of_digits) {
+	
+	divisor = (2 * n) + 1;
+	if (n % 2 == 0) {
+		pi = pi + (4 / divisor);
+	} else {
+		pi = pi - (4 / divisor);
+	}
+	n++;
+
+	pi_string = pi.toString();
+	
+	if (pi_string.length() >= digits_so_far + 1) {
+		if (pi_string.substring(0,(digits_so_far+1)) == '3.14159265358'.substring(0,(digits_so_far+1))) {
+			print digits_so_far;
+			print ' ' * (number_of_digits - (digits_so_far.toString().length() -1));
+			print pi_string.substring(0,(digits_so_far+1));
+			print ' ' * (number_of_digits - digits_so_far + 1);
+			println n;
+			digits_so_far++;
+		}
+	}
+}
+
+// Output
+// Please enter how many digits of pi you need: 10
+// digits     pi          terms
+// 2          3.1         19
+// 3          3.14        119
+// 4          3.141       1688
+// 5          3.1415      10794
+// 6          3.14159     136193
+// 7          3.141592    1510290
+// 8          3.1415926   14635932
+// 9          3.14159265  49321826
+// 10         3.141592653 58224164

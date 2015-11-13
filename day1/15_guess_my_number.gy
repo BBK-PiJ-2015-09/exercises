@@ -1,0 +1,24 @@
+int numberToGuess = Math.abs(1000 * Math.random());
+String str;
+int guess;
+int guessCount = 0;
+println 'Try to guess my number!';
+
+while ( guess != numberToGuess ) {
+	print 'Tell me a number: ';
+	str = System.console().readLine();
+	guess = Integer.parseInt(str);
+	guessCount++;
+	if (guess == numberToGuess) {
+		println 'CORRECT! The number was ' + numberToGuess + '!';
+		if ( guessCount == 1 ) {
+			println 'You took 1 guess.';
+		} else {
+			println 'You took ' + guessCount + ' guesses.';
+		}
+	} else if (guess > numberToGuess) {
+		println 'No! My number is lower.';
+	} else {
+		println 'No! My number is higher.';
+	}
+}

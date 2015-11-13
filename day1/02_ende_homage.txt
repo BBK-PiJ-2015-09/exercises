@@ -1,0 +1,1 @@
+The code will not print anything, because the while condition is already met - i is already greater than 4.

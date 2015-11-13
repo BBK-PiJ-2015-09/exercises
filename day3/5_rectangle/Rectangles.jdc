@@ -1,0 +1,45 @@
+Rectangle myRectangle = new Rectangle();
+myRectangle.upLeft = new Point();
+myRectangle.downRight = new Point();
+
+print("Please enter the top left x value: ");
+String str = System.console().readLine();
+myRectangle.upLeft.x = Integer.parseInt(str);
+print("Please enter the top left y value: ");
+str = System.console().readLine();
+myRectangle.upLeft.y = Integer.parseInt(str);
+print("Please enter the bottom right x value: ");
+str = System.console().readLine();
+myRectangle.downRight.x = Integer.parseInt(str);
+print("Please enter the bottom right y value: ");
+str = System.console().readLine();
+myRectangle.downRight.y = Integer.parseInt(str);
+
+println("The perimeter is " + perimeter(myRectangle));
+println("The area is " + area(myRectangle));
+
+Double perimeter(Rectangle rectangle) {
+	return (width(rectangle.downRight.x, rectangle.upLeft.x) * 2) + (height(rectangle.upLeft.y, rectangle.downRight.y) * 2);
+}
+
+Double area(Rectangle rectangle) {
+	return width(rectangle.downRight.x, rectangle.upLeft.x) * height(rectangle.upLeft.y, rectangle.downRight.y);
+}
+
+Double width(double max_x, double min_x) {
+	return max_x - min_x;
+}
+
+Double height(double max_y, double min_y) {
+	return max_y - min_y;
+}
+
+class Point {
+	double x;
+	double y;
+}
+
+class Rectangle {
+	Point upLeft;
+	Point downRight;
+}

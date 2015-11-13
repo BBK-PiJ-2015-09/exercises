@@ -1,0 +1,18 @@
+print 'Please enter a number: ';
+String str = System.console().readLine();
+Integer number = Integer.parseInt(str);
+Integer divisor = number - 1;
+Boolean is_prime = true;
+	
+while (divisor > 1) {
+	if(number % divisor == 0) {
+		is_prime = false;
+	}
+	divisor--;
+}
+
+if(is_prime){
+	println str + ' is a prime number.';
+} else {
+	println str + ' is not a prime number.';
+}

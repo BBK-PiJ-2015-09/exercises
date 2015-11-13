@@ -1,0 +1,21 @@
+println("Please enter the first number: ");
+double first_number = readDouble();
+println("Please enter the second number: ");
+double second_number = readDouble();
+
+println("Please select your operation!");
+println("1 -- Addition");
+println("2 -- Subtraction");
+println("3 -- Multiplication");
+println("4 -- Division");
+
+int operation = readInt();
+if (operation == 1) {
+	println(first_number + second_number);
+} else if (operation == 2) {
+	println(first_number - second_number);
+} else if (operation == 3) {
+	println(first_number * second_number);
+} else {
+	println(first_number / second_number);
+}

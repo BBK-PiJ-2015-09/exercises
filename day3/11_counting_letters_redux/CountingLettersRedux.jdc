@@ -1,0 +1,60 @@
+print("Please write a text: ");
+String mainText = System.console().readLine();
+char searchChar;
+String history = "";
+Boolean stop = false;
+
+while ( !stop ) {
+	searchChar = getInput();
+	history = history + searchChar;
+	
+	if (repeated(searchChar, history)) {
+		stop = true;
+	} else {
+		countMessage(stringCount(searchChar, mainText));
+	}
+}
+
+endMessage();
+
+char getInput() {
+	print("Which letter would you like to count now? ");
+	String letter = System.console().readLine();
+	while (letter.length() != 1) {
+		println("Please enter a single letter.");
+		print("Which letter would you like to count now? ");
+		letter = System.console().readLine();
+	}
+	return letter.charAt(0);
+}
+
+Boolean repeated(char searchChar, String text) {
+	return stringCount(searchChar, text) > 1;
+}
+
+void countMessage(int count) {
+	println("There are " + count + " in your text.");
+}
+
+int stringCount(char searchChar, String mainText) {
+	int resultsCounter = 0;
+	int mainTextCounter = 0;
+
+	while (!endOfString(mainTextCounter, mainText)) {
+		if(searchChar == mainText.charAt(mainTextCounter)) {
+			resultsCounter++;
+		}
+		mainTextCounter++;
+	}
+
+	return resultsCounter;
+}
+
+Boolean endOfString(int counter, String string) {
+	return counter >= string.length();
+}
+
+void endMessage() {
+	println("Repeated character. Exiting the program...");
+	println("Thank you for your cooperation. Good bye!");
+}
