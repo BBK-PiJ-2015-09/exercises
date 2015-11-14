@@ -3,6 +3,7 @@ public class LinkedInt {
 	private LinkedInt next;
 	private LinkedInt last;
 	private static boolean swapped;
+	private static LinkedInt start;
 	
 	public LinkedInt(int value) {
 		this.value = value;
@@ -11,56 +12,95 @@ public class LinkedInt {
 		this.swapped = false;
 	}
 
-	public void addInt(LinkedInt newInt) {
-		if (endOfList()) {
-			link(this, newInt);
-		} else {
-			next.addInt(newInt);
-		}
-	}
-
-	public void setLast(LinkedInt newLast) {
-		last = newLast;
-	}
-
-	public void setNext(LinkedInt newNext) {
-		next = newNext;
-	}
-
-	public LinkedInt getNext() {
-		return next;
-	}
-	
-	public int getValue() {
-		return value;
-	}
-
-	public boolean startOfList() {
-		return last == null;
-	}
-
-	public boolean endOfList() {
-		return next == null;
-	}
-
-	public void bubbleSort(LinkedList list) {
+	public void bubbleSort() {
 		if (endOfList()) {
 			if (swapped) {
-				swapped = false;
-				list.getStart().bubbleSort(list);
+				unswapped();
+				start.bubbleSort();
 			}
 		}  else if (value > next.getValue()) {
 			if (startOfList()) {
-				list.setStart(next);
+				start = next;
 			}
 			swapNext();
-			this.bubbleSort(list);
+			this.bubbleSort();
 		} else {
-			next.bubbleSort(list);
+			next.bubbleSort();
 		}
 	}
 
-	public void swapNext() {
+	// LinkedList
+	
+	public void addInt(int value) {
+		LinkedInt newInt = new LinkedInt(value);
+		if (getStart() == null) {
+			setStart(newInt);
+		} else {
+			getStart().linkInt(newInt);
+		}
+	}
+	
+	public static LinkedInt getStart() {
+		return start;
+	}
+	
+	public void printList() {
+		start.print();
+	}
+
+	private static void setStart(LinkedInt newStart) {
+		start = newStart;
+	}
+
+////////////
+	
+	private void unswapped() {
+		swapped = false;
+	}
+	
+	private void print() {
+		System.out.println("---");
+		System.out.println(last);
+		System.out.println(value);
+		System.out.println(next);
+		if (!endOfList()) {
+			next.print();
+		}
+	}
+
+	private void linkInt(LinkedInt newInt) {
+		if (endOfList()) {
+			link(this, newInt);
+		} else {
+			next.linkInt(newInt);
+		}
+	}
+
+	private void setLast(LinkedInt newLast) {
+		last = newLast;
+	}
+
+	private void setNext(LinkedInt newNext) {
+		next = newNext;
+	}
+
+	private LinkedInt getNext() {
+		return next;
+	}
+	
+	private int getValue() {
+		return value;
+	}
+
+	private boolean startOfList() {
+		return last == null;
+	}
+
+	private boolean endOfList() {
+		return next == null;
+	}
+
+	private void swapNext() {
 		link(last, next);		
 		LinkedInt nextNext = next.getNext();
 		link(next, this);
@@ -68,7 +108,7 @@ public class LinkedInt {
 		swapped = true;
 	}
 
-	public void link(LinkedInt a, LinkedInt b) {
+	private void link(LinkedInt a, LinkedInt b) {
 		if (a != null) {
 			a.setNext(b);
 		}
@@ -77,10 +117,4 @@ public class LinkedInt {
 		}
 	}
 
-	public void printList(LinkedInt linkedInt) {
-		System.out.println(linkedInt.getValue());
-		if (!linkedInt.endOfList()) {
-			printList(linkedInt.next);
-		}
-	}
 }
