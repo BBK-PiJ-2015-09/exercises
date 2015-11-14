@@ -14,7 +14,7 @@ public class LinkedInt {
 	public void bubbleSort(LinkedList list) {
 		if (endOfList()) {
 			if (swapped) {
-				unswapped();
+				swapped = false;
 				list.getStart().bubbleSort(list);
 			}
 		}  else if (value > next.getValue()) {
@@ -43,24 +43,20 @@ public class LinkedInt {
 		}
 	}
 
-	private void unswapped() {
-		swapped = false;
+	private int getValue() {
+		return value;
 	}
 
-	private void setLast(LinkedInt newLast) {
-		last = newLast;
+	private LinkedInt getNext() {
+		return next;
 	}
 
 	private void setNext(LinkedInt newNext) {
 		next = newNext;
 	}
 
-	private LinkedInt getNext() {
-		return next;
-	}
-	
-	private int getValue() {
-		return value;
+	private void setLast(LinkedInt newLast) {
+		last = newLast;
 	}
 
 	private boolean startOfList() {

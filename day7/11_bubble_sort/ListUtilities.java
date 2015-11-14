@@ -12,4 +12,13 @@ public class ListUtilities {
 		list.bubbleSort();
 	}
 	
+	public void benchmark(LinkedList list, String algorithm) {
+		if (algorithm == "bubble") {
+			long start = System.nanoTime();
+			list.bubbleSort();
+			long result = System.nanoTime() - start;
+			System.out.println("Sorted in " + result + "ns!");
+		}
+	}
+	
 }
