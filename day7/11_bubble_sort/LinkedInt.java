@@ -2,17 +2,18 @@ public class LinkedInt {
 	private int value;
 	private LinkedInt next;
 	private LinkedInt last;
+	private static boolean swapped;
 	
 	public LinkedInt(int value) {
 		this.value = value;
 		this.next = null;
 		this.last = null;
+		this.swapped = false;
 	}
 
 	public void addInt(LinkedInt newInt) {
-		if (next == null) {
-			next = newInt;
-			newInt.setLast(this);
+		if (endOfList()) {
+			link(this, newInt);
 		} else {
 			next.addInt(newInt);
 		}
@@ -33,63 +34,52 @@ public class LinkedInt {
 	public int getValue() {
 		return value;
 	}
-	
-	public void pry(boolean swapped, LinkedList list, String location, int pass) {
-		System.out.println("On pass: " + pass);
-		System.out.println("At location: " + location);
-		System.out.println("Swapped is " + swapped);
-		System.out.print("The current int is: ");
-		print();
-		System.out.println("The state of the list is:");
-		list.print();
-		System.out.println("------------");
+
+	public boolean startOfList() {
+		return last == null;
 	}
-	
-	public void bubbleSort(int pass, boolean swapped, LinkedList list) {
-		pry(swapped, list, "A", pass);
-		if (next == null) {
-			pass++;
-			pry(swapped, list, "B", pass);
+
+	public boolean endOfList() {
+		return next == null;
+	}
+
+	public void bubbleSort(LinkedList list) {
+		if (endOfList()) {
 			if (swapped) {
 				swapped = false;
-				list.getStart().bubbleSort(pass, swapped, list);
+				list.getStart().bubbleSort(list);
 			}
 		}  else if (value > next.getValue()) {
-			pry(swapped, list, "D", pass);
-			swap(list);
-			swapped = true;
-			this.bubbleSort(pass, swapped, list);
+			if (startOfList()) {
+				list.setStart(next);
+			}
+			swapNext();
+			this.bubbleSort(list);
 		} else {
-			pry(swapped, list, "E", pass);
-			next.bubbleSort(pass, swapped, list);
+			next.bubbleSort(list);
 		}
 	}
 
-	public void swap(LinkedList list) {
-		LinkedInt tempNextNext = next.getNext();
-		if (last == null) {
-			list.setStart(next);
-		} else {
-			last.setNext(next);
-		}
-		next.setLast(last);
-		last = next;
-		next.setNext(this);
-		next = tempNextNext;
-		if (next!=null) {
-			next.setLast(this);
-		}
+	public void swapNext() {
+		link(last, next);		
+		LinkedInt nextNext = next.getNext();
+		link(next, this);
+		link(this, nextNext);
+		swapped = true;
 	}
 
-	public void print() {
-		System.out.println(value);
+	public void link(LinkedInt a, LinkedInt b) {
+		if (a != null) {
+			a.setNext(b);
+		}
+		if (b != null) {
+			b.setLast(a);
+		}
 	}
 
 	public void printList(LinkedInt linkedInt) {
-		if (linkedInt.next == null) {
-			linkedInt.print();
-		} else {
-			linkedInt.print();
+		System.out.println(linkedInt.getValue());
+		if (!linkedInt.endOfList()) {
 			printList(linkedInt.next);
 		}
 	}

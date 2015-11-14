@@ -23,9 +23,7 @@ public class LinkedList {
 	}
 
 	public LinkedList bubbleSort() {
-		boolean swapped = false;
-		int pass = 0;
-		start.bubbleSort(pass, swapped, this);
+		start.bubbleSort(this);
 		return this;
 	}
 }
