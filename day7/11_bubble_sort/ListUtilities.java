@@ -1,14 +1,14 @@
 public class ListUtilities {
 	
-	public LinkedInt arrayToList(int[] array) {
-		LinkedInt firstInt = new LinkedInt(array[0]);
+	public LinkedList arrayToList(int[] array) {
+		LinkedList list = new LinkedList();
 		for(int i = 0; i < array.length; i++) {
-			firstInt.addInt(array[i]);
+			list.addInt(array[i]);
 		}
-		return firstInt.getStart();
+		return list;
 	}
 	
-	public void bubbleSort(LinkedInt list) {
+	public void bubbleSort(LinkedList list) {
 		list.bubbleSort();
 	}
 	
