@@ -23,12 +23,14 @@ public class LinkedList {
 	}
 
 	public void bubbleSort() {
-		start.bubbleSort(this);
+		boolean swapped = false;
+		start.bubbleSort(this, swapped);
 	}
 
 	public void cocktailSort() {
-		int pass = 0;
-		start.cocktailSort(this, pass);
+		boolean forward = true;
+		boolean swapped = false;
+		start.cocktailSort(this, forward, swapped);
 	}
 
 	public void print() {

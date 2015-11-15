@@ -2,132 +2,19 @@ public class LinkedInt {
 	private int value;
 	private LinkedInt next;
 	private LinkedInt last;
-	private static boolean swapped;
 	
 	public LinkedInt(int value) {
 		this.value = value;
 		this.next = null;
 		this.last = null;
-		this.swapped = false;
 	}
 
-	// public LinkedInt getEnd() {
-	// 	if (next == null) {
-	// 		return this;
-	// 	} else {
-	// 		return next.getEnd();
-	// 	}
-	// }
-
-	public void pry(boolean swapped, LinkedList list, String location, int pass) {
-		System.out.println("On pass: " + pass);
-		System.out.println("At location: " + location);
-		System.out.println("Swapped is " + swapped);
-		System.out.println("The current int is: ");
-		printInt();
-		System.out.println("The state of the list is:");
-		list.print();
-		System.out.println("------------");
-	}
-
-	public void bubbleSort(LinkedList list) {
+	public void addInt(LinkedInt newInt) {
 		if (endOfList()) {
-			if (swapped) {
-				swapped = false;
-				list.getStart().bubbleSort(list);
-			}
-		} else if (value > next.getValue()) {
-			if (startOfList()) {
-				list.setStart(next);
-			}
-			swapNext();
-			this.bubbleSort(list);
+			link(this, newInt);
 		} else {
-			next.bubbleSort(list);
+			next.addInt(newInt);
 		}
-	}
-
-	public void cocktailSort(LinkedList list, int pass) {
-		pry(swapped, list, "cocktailSort", pass);
-		forwardBubbleSort(list, pass);
-	}
-
-	public void forwardBubbleSort(LinkedList list, int pass) {
-		// pry(swapped, list, "forwardBubbleSort", pass);
-		if (endOfList()) {
-			pass++;
-			if (swapped) {
-				swapped = false;
-				backwardBubbleSort(list, pass);
-			}
-		} else if (value > next.getValue()) {
-			if (startOfList()) {
-				list.setStart(next);
-			}
-			swapNext();
-			this.forwardBubbleSort(list, pass);
-		} else {
-			next.forwardBubbleSort(list, pass);
-		}
-	}
-
-	public void backwardBubbleSort(LinkedList list, int pass) {
-		// pry(swapped, list, "backwardBubbleSort", pass);
-		if (startOfList()) {
-			if (swapped) {
-				swapped = false;
-				forwardBubbleSort(list, pass);
-			}
-		} else if (value < last.getValue()) {
-			if (last.startOfList()) {
-				list.setStart(this);
-			}
-			swapLast();
-			this.backwardBubbleSort(list, pass);
-		} else {
-			last.backwardBubbleSort(list, pass);
-		}
-	}
-
-	private void swapNext() {
-		link(last, next);		
-		LinkedInt nextNext = next.getNext();
-		link(next, this);
-		link(this, nextNext);
-		swapped = true;
-	}
-
-	private void swapLast() {
-		link(last, next);		
-		LinkedInt lastLast = last.getLast();
-		link(this, last);
-		link(lastLast, this);
-		swapped = true;
-	}
-
-	private void link(LinkedInt a, LinkedInt b) {
-		if (a != null) {
-			a.setNext(b);
-		}
-		if (b != null) {
-			b.setLast(a);
-		}
-	}
-
-	public void printInt() {
-		System.out.println("---");
-		if (startOfList()) {
-			System.out.println("Last: null");
-		} else {
-			System.out.println("Last: " + last.getValue());
-		}
-		System.out.println("Value: " + value);
-		if (endOfList()) {
-			System.out.println("Next: null");
-		} else {
-			System.out.println("Next: " + next.getValue());
-		}
-		System.out.println("---");
 	}
 
 	public void print() {
@@ -137,11 +24,80 @@ public class LinkedInt {
 		}
 	}
 
-	public void addInt(LinkedInt newInt) {
+	public void bubbleSort(LinkedList list, boolean swapped) {
 		if (endOfList()) {
-			link(this, newInt);
+			if (swapped) {
+				swapped = false;
+				list.getStart().bubbleSort(list, swapped);
+			}
+		} else if (value > next.getValue()) {
+			if (startOfList()) {
+				list.setStart(next);
+			}
+			swapped = this.swapNext();
+			this.bubbleSort(list, swapped);
 		} else {
-			next.addInt(newInt);
+			next.bubbleSort(list, swapped);
+		}
+	}
+
+	public void cocktailSort(LinkedList list, boolean forward, boolean swapped) {
+		if (forward) {
+			forwardBubble(list, forward, swapped);
+		} else {
+			backwardBubble(list, forward, swapped);
+		}
+	}
+
+	private void forwardBubble(LinkedList list, boolean forward, boolean swapped) {
+		if (endOfList()) {
+			nextLoopChecker(list, forward, swapped);
+		} else if (this.getValue() > next.getValue()) {
+			if (this.startOfList()) {
+				list.setStart(next);
+			}
+			swapped = this.swapNext();
+			cocktailSort(list, forward, swapped);
+		} else {
+			next.cocktailSort(list, forward, swapped);
+		}
+	}
+
+	private void backwardBubble(LinkedList list, boolean forward, boolean swapped) {
+		if (startOfList()) {
+			nextLoopChecker(list, forward, swapped);
+		} else if (last.getValue() > this.getValue()) {
+			if (last.startOfList()) {
+				list.setStart(this);
+			}
+			swapped = last.swapNext();
+			cocktailSort(list, forward, swapped);
+		} else {
+			last.cocktailSort(list, forward, swapped);
+		}
+	}
+
+	private void nextLoopChecker(LinkedList list, boolean forward, boolean swapped) {
+		if (swapped) {
+			swapped = false;
+			cocktailSort(list, !forward, swapped);
+		}
+	}
+
+	private boolean swapNext() {
+		link(last, next);		
+		LinkedInt nextNext = next.getNext();
+		link(next, this);
+		link(this, nextNext);
+		return true;
+	}
+
+	private void link(LinkedInt a, LinkedInt b) {
+		if (a != null) {
+			a.setNext(b);
+		}
+		if (b != null) {
+			b.setLast(a);
 		}
 	}
 
