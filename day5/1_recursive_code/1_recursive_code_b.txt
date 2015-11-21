@@ -1,0 +1,1 @@
+If n is odd, the method would never reach its base case and therefore never end. I would fix it by returning once n was less than or equal to zero, rather than only when equal to zero.
