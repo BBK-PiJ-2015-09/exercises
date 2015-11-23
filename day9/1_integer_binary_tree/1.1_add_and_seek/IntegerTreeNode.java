@@ -67,19 +67,40 @@ public class IntegerTreeNode {
 		}
 	}
 
-	public void print() {
-		System.out.println("--------------");
-		System.out.println("Value: " + value);
+	public String print() {
+		String string = "";
+		string += "[" + value + " ";
 		if (left == null) {
-			System.out.println("Left: null");
+			string += "L: [] ";
 		} else {
-			System.out.println("Left: " + left.getValue());
+			string += "L: [" + left.getValue() + "] ";
 		}
 		if (right == null) {
-			System.out.println("Right: null");
+			string += "R: [] ";
 		} else {
-			System.out.println("Right: " + right.getValue());
+			string += "R: [" + right.getValue() + "] ";
 		}
+		string += "]";
+		return string;
+	}
+	
+	public void toStringLol() {
+		System.out.print("[");
+		System.out.print(value);
+		if (left != null) {
+			System.out.print(" L");
+			left.toStringLol();
+		} else {
+			System.out.print(" L[]");
+		}
+
+		if (right != null) {
+			System.out.print(" R");
+			right.toStringLol();
+		} else {
+			System.out.print(" R[]");
+		}
+		System.out.print("]");
 	}
 
 }
