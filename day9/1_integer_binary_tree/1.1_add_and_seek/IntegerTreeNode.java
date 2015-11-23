@@ -1,7 +1,7 @@
 public class IntegerTreeNode {
-	int value;
-	IntegerTreeNode left;
-	IntegerTreeNode right;
+	private int value;
+	private IntegerTreeNode left;
+	private IntegerTreeNode right;
 
 	public IntegerTreeNode(int newNumber) {
 		value = newNumber;
@@ -67,23 +67,6 @@ public class IntegerTreeNode {
 		}
 	}
 
-	public String print() {
-		String string = "";
-		string += "[" + value + " ";
-		if (left == null) {
-			string += "L: [] ";
-		} else {
-			string += "L: [" + left.getValue() + "] ";
-		}
-		if (right == null) {
-			string += "R: [] ";
-		} else {
-			string += "R: [" + right.getValue() + "] ";
-		}
-		string += "]";
-		return string;
-	}
-	
 	public void toStringLol() {
 		System.out.print("[");
 		System.out.print(value);
@@ -101,6 +84,20 @@ public class IntegerTreeNode {
 			System.out.print(" R[]");
 		}
 		System.out.print("]");
+	}
+	
+	public int depth() {
+		if (left == null) {
+			if (right == null) {
+				return 0;
+			} else {
+				return right.depth() + 1;
+			}
+		} else if (right == null || left.depth() >= right.depth()) {
+			return left.depth() + 1;
+		} else {
+			return right.depth() + 1;
+		}
 	}
 
 }
