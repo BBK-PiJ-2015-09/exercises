@@ -50,6 +50,22 @@ public class IntegerTreeNode {
 			}
 		}
 	}
+	
+	public int getMax() {
+		if (right == null) {
+			return value;
+		} else {
+			return right.getMax();
+		}
+	}
+	
+	public int getMin() {
+		if (left == null) {
+			return value;
+		} else {
+			return left.getMin();
+		}
+	}
 
 	public void print() {
 		System.out.println("--------------");
