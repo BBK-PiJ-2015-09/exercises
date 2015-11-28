@@ -98,7 +98,19 @@ public class IntegerTreeNode {
 			return "[" + value + " L" + left.toString() + " R" + right.toString() + "]";
 		}
 	}
-	
+
+	public String toStringSimple() {
+		if ( right == null && left == null) {
+			return "[" + value + "]";
+		} else if ( right == null ) {
+			return "[" + value + " " + left.toStringSimple() + "]";
+		} else if ( left == null) {
+			return "[" + value + " " + right.toStringSimple() + "]";
+		} else {
+			return "[" + value + " " + left.toStringSimple() + " " + right.toStringSimple() + "]";
+		}
+	}
+
 	// Sergio's method
 	public int getDepth() {
 		int leftDepth = 0;
