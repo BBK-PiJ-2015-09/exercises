@@ -1,3 +1,4 @@
+// With Ginestra - #24
 public class IntegerTreeNode {
 	private int value;
 	private IntegerTreeNode left;
@@ -17,6 +18,10 @@ public class IntegerTreeNode {
 		return right;
 	}
 
+	public IntegerTreeNode getLeft() {
+		return left;
+	}
+
 	public void add(int newNumber) {
 		if (newNumber > this.value) {
 			if (right == null) {
@@ -30,6 +35,21 @@ public class IntegerTreeNode {
 			} else {
 				left.add(newNumber);
 			}
+		}
+	}
+	
+	public void print() {
+		System.out.println("-----");
+		System.out.println("Value: " + value);
+		if ( left != null) {
+			System.out.println("Left: " + left.getValue());
+		} else {
+			System.out.println("Left: null");
+		}
+		if (right != null) {
+			System.out.println("Right: " + right.getValue());
+		} else {
+			System.out.println("Right: null");
 		}
 	}
 	
@@ -67,33 +87,45 @@ public class IntegerTreeNode {
 		}
 	}
 
-	public void toStringLol() {
-		System.out.print("[");
-		System.out.print(value);
-		if (left != null) {
-			System.out.print(" L");
-			left.toStringLol();
+	public String toString() {
+		if ( right == null && left == null) {
+			return "[" + value + " L[] R[]]";
+		} else if ( right == null ) {
+			return "[" + value + " L" + left.toString() + " R[]]";
+		} else if ( left == null) {
+			return "[" + value + " L[] R" + right.toString() + "]";
 		} else {
-			System.out.print(" L[]");
+			return "[" + value + " L" + left.toString() + " R" + right.toString() + "]";
 		}
-
-		if (right != null) {
-			System.out.print(" R");
-			right.toStringLol();
-		} else {
-			System.out.print(" R[]");
-		}
-		System.out.print("]");
 	}
 	
+	// Sergio's method
+	public int getDepth() {
+		int leftDepth = 0;
+		if (left != null) {
+			leftDepth = left.getDepth();
+		}
+		int rightDepth = 0;
+		if (right != null) {
+			rightDepth = right.getDepth();
+		}
+		if (leftDepth > rightDepth) {
+			return 1 + leftDepth;
+		} else {
+			return 1 + rightDepth;
+		}
+	}
+
 	public int depth() {
 		if (left == null) {
 			if (right == null) {
-				return 0;
+				return 1;
 			} else {
 				return right.depth() + 1;
 			}
-		} else if (right == null || left.depth() >= right.depth()) {
+		} else if (right == null) {
+			return left.depth() + 1;
+		} else if (left.depth() > right.depth()) {
 			return left.depth() + 1;
 		} else {
 			return right.depth() + 1;
