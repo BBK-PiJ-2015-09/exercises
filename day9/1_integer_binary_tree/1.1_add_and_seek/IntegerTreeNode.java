@@ -37,7 +37,44 @@ public class IntegerTreeNode {
 			}
 		}
 	}
-	
+
+	public void remove(int n) {
+		if (right == null && left == null) {
+			return;
+		} else if (right == null) {
+			if (left.getValue() == n) {
+				if (left.getLeft() == null && left.getRight() == null) {
+					left = null;
+				}
+			} else {
+				left.remove(n);
+			}
+		} else if (left == null) {
+			if (right.getValue() == n) {
+				if (right.getLeft() == null && right.getRight() == null) {
+					right = null;
+				}
+			} else {
+				right.remove(n);
+			}
+		} else {
+			if (left.getValue() == n) {
+				if (left.getLeft() == null && left.getRight() == null) {
+					left = null;
+				}
+				right.remove(n);
+			} else if (right.getValue() == n) {
+				if (right.getLeft() == null && right.getRight() == null) {
+					right = null;
+				}
+				left.remove(n);
+			} else {
+				right.remove(n);
+				left.remove(n);	
+			}
+		}
+	}
+
 	public void print() {
 		System.out.println("-----");
 		System.out.println("Value: " + value);
