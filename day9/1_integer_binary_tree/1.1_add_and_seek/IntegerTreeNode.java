@@ -39,38 +39,50 @@ public class IntegerTreeNode {
 	}
 
 	public void remove(int n) {
-		if (right == null && left == null) {
-			return;
-		} else if (right == null) {
-			if (left.getValue() == n) {
-				if (left.getLeft() == null && left.getRight() == null) {
-					left = null;
-				}
-			} else {
-				left.remove(n);
-			}
-		} else if (left == null) {
-			if (right.getValue() == n) {
-				if (right.getLeft() == null && right.getRight() == null) {
+		if (this.value == n) {
+			if (left == null && right == null) {
+				this.value = 0;
+			} else if (left == null) {
+				this.value = right.getMin();
+				if (right.getMin() == right.getMax()) {
 					right = null;
+				} else {
+					right.remove(right.getMin());
 				}
 			} else {
-				right.remove(n);
+				this.value = left.getMax();
+				if (left.getMin() == left.getMax()) {
+					left = null;
+				} else {
+					left.remove(left.getMax());
+				}
 			}
 		} else {
-			if (left.getValue() == n) {
-				if (left.getLeft() == null && left.getRight() == null) {
+			if (left == null && right == null) {
+				return;
+			} else if (right == null) {
+				if (left.getValue() == n && left.getMin() == left.getMax()) {
 					left = null;
+				} else {
+					left.remove(n);
 				}
-				right.remove(n);
-			} else if (right.getValue() == n) {
-				if (right.getLeft() == null && right.getRight() == null) {
+			} else if (left == null) {
+				if (right.getValue() == n && right.getMin() == right.getMax()) {
 					right = null;
+				} else {
+					right.remove(n);
 				}
-				left.remove(n);
 			} else {
-				right.remove(n);
-				left.remove(n);	
+				if (left.getValue() == n && left.getMin() == left.getMax()) {
+					left = null;
+				} else {
+					left.remove(n);
+				}
+				if (right.getValue() == n && right.getMin() == right.getMax()) {
+					right = null;
+				} else {
+					right.remove(n);
+				}
 			}
 		}
 	}
