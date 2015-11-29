@@ -44,46 +44,42 @@ public class IntegerTreeNode {
 				this.value = 0;
 			} else if (left == null) {
 				this.value = right.getMin();
-				if (right.getMin() == right.getMax()) {
+				if (right.singleValueTree()) {
 					right = null;
 				} else {
 					right.remove(right.getMin());
 				}
 			} else {
 				this.value = left.getMax();
-				if (left.getMin() == left.getMax()) {
+				if (left.singleValueTree()) {
 					left = null;
 				} else {
 					left.remove(left.getMax());
 				}
 			}
 		} else {
-			if (left == null && right == null) {
-				return;
-			} else if (right == null) {
-				if (left.getValue() == n && left.getMin() == left.getMax()) {
+			if (left != null) {
+				if (left.getValue() == n && left.singleValueTree()) {
 					left = null;
 				} else {
 					left.remove(n);
 				}
-			} else if (left == null) {
-				if (right.getValue() == n && right.getMin() == right.getMax()) {
-					right = null;
-				} else {
-					right.remove(n);
-				}
-			} else {
-				if (left.getValue() == n && left.getMin() == left.getMax()) {
-					left = null;
-				} else {
-					left.remove(n);
-				}
-				if (right.getValue() == n && right.getMin() == right.getMax()) {
+			} 
+			if (right != null) {
+				if (right.getValue() == n && right.singleValueTree()) {
 					right = null;
 				} else {
 					right.remove(n);
 				}
 			}
+		}
+	}
+
+	public boolean singleValueTree() {
+		if (getMin() == getMax()) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
