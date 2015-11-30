@@ -1,4 +1,4 @@
-public class Instrument implements WoodenObject {
+public class Instrument implements WoodenObject, MusicalInstrument {
 
 	public void burn() {
 		System.out.println("Burning instrument :(");
