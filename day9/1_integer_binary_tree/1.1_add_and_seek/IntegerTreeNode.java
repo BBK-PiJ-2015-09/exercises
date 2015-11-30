@@ -38,6 +38,38 @@ public class IntegerTreeNode {
 		}
 	}
 
+	public void rebalance() {
+		if (left == null && right == null) {
+			return;
+		} else if (left==null && right.depth() > 1) {
+			int orig = this.value;
+			value = right.getMin();
+			right.remove(right.getMin());
+			add(orig);
+			rebalance();
+		} else if (right==null && left.depth() > 1) {
+			int orig = this.value;
+			value = left.getMax();
+			left.remove(left.getMax());
+			add(orig);
+			rebalance();
+		} else if (left.depth() - right.depth() > 1) {
+			int orig = this.value;
+			value = left.getMax();
+			left.remove(left.getMax());
+			add(orig);
+			rebalance();
+		} else if (right.depth() - left.depth() > 1) {
+			int orig = this.value;
+			value = right.getMin();
+			right.remove(right.getMin());
+			add(orig);
+			rebalance();
+		} else {
+			return;
+		}
+	}
+
 	public void remove(int n) {
 		if (this.value == n) {
 			if (left == null && right == null) {
