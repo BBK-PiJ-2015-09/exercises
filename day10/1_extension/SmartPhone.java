@@ -19,8 +19,8 @@ public class SmartPhone extends MobilePhone {
 	 */
 	public void call(String number) {
 		super.call(number);
-		if (number.charAt(0) == '0' && number.charAt(0) == '0') {
-			System.out.println("Calling " + number + " through the internet to save money...");
+		if (number.charAt(0) == '0' && number.charAt(1) == '0') {
+			System.out.println("through the internet to save money...");
 		}
 	}
 
@@ -37,6 +37,14 @@ public class SmartPhone extends MobilePhone {
 	 */
 	public void findPosition() {
 		System.out.println("GPS Coords: N 10° 20.345' E 10° 20.345'");
+	}
+
+	/**
+	 * Prints game on screen.
+   	 * @param game the game to be played.
+	 */
+	public void playGame(String game) {
+		System.out.println("Playing " + game + "!");
 	}
 
 }

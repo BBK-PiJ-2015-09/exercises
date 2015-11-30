@@ -51,7 +51,7 @@ public class MobilePhone extends OldPhone {
 	 * Prints game on screen.
    	 * @param game the game to be played.
 	 */
-	public void playGame(String game) {
+	private void playGame(String game) {
 		System.out.println("Playing " + game + "!");
 	}
 
