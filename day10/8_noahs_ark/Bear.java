@@ -1,7 +1,7 @@
 public class Bear extends Mammal {
 	
 	public Bear() {
-		super("Bear");
+		super("Bear", "Land");
 	}
 
 }

@@ -1,7 +1,7 @@
 public class Mammal extends Animal {
 	
-	public Mammal(String name) {
-		super(name);
+	public Mammal(String name, String type) {
+		super(name, type);
 	}
 	
 	// @Override

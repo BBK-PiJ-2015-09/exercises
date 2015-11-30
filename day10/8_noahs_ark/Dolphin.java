@@ -1,7 +1,7 @@
-public class Dolphin extends AquaticAnimal {
+public class Dolphin extends Mammal {
 	
 	public Dolphin() {
-		super("Dolphin");
+		super("Dolphin", "Aquatic");
 	}
 	
 }
