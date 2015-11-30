@@ -39,34 +39,33 @@ public class IntegerTreeNode {
 	}
 
 	public void rebalance() {
-		if (left == null && right == null) {
-			return;
-		} else if (left==null && right.depth() > 1) {
-			int orig = this.value;
+		int root = value;
+		if (rightDepth() > leftDepth()) {
 			value = right.getMin();
-			right.remove(right.getMin());
-			add(orig);
+			right.remove(value);
+			add(root);
 			rebalance();
-		} else if (right==null && left.depth() > 1) {
-			int orig = this.value;
+		} else if (leftDepth() > rightDepth()) {
 			value = left.getMax();
-			left.remove(left.getMax());
-			add(orig);
+			left.remove(value);
+			add(root);
 			rebalance();
-		} else if (left.depth() - right.depth() > 1) {
-			int orig = this.value;
-			value = left.getMax();
-			left.remove(left.getMax());
-			add(orig);
-			rebalance();
-		} else if (right.depth() - left.depth() > 1) {
-			int orig = this.value;
-			value = right.getMin();
-			right.remove(right.getMin());
-			add(orig);
-			rebalance();
+		}
+	}
+
+	private int leftDepth() {
+		if (left == null) {
+			return 0;
 		} else {
-			return;
+			return left.depth();
+		}
+	}
+
+	private int rightDepth() {
+		if (right == null) {
+			return 0;
+		} else {
+			return right.depth();
 		}
 	}
 
