@@ -9,4 +9,8 @@ public class Animal {
 		System.out.println(name + " coming...");
 	}
 	
+	public void reproduce() {
+		
+	}
+	
 }
