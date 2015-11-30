@@ -41,7 +41,7 @@ public class SmartPhone extends MobilePhone {
 
 	/**
 	 * Prints game on screen.
-   	 * @param game the game to be played.
+   	 * @param game the game to be played. 
 	 */
 	public void playGame(String game) {
 		System.out.println("Playing " + game + "!");

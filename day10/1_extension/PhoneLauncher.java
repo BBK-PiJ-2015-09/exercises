@@ -6,6 +6,13 @@ public class PhoneLauncher {
 	}
 	public void launch() {
 		SmartPhone mob = new SmartPhone("NOKIA");
+		fullTest(mob);
+		RestrictedSmartPhone limitedMob = new RestrictedSmartPhone("Apple");
+		limitedMob.call("10");
+		// limitedMob.playGame("Pacman");
+	}
+
+	public void fullTest(SmartPhone mob) {
 		mob.call("1");
 		mob.call("2");
 		mob.call("3");
