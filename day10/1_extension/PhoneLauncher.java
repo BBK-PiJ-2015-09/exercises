@@ -22,6 +22,7 @@ public class PhoneLauncher {
 		mob.browseWeb("news.ycombinator.com");
 		mob.ringAlarm("braying sheep");
 		mob.playGame("snake 2");
+		mob.call("001234");
 	}
 
 }

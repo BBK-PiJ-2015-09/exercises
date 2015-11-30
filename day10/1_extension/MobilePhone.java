@@ -8,6 +8,7 @@ public class MobilePhone extends OldPhone {
 	 * Prints: "Calling <number>...".
 	 * Adds number to history and removes oldest number
 	 * @param number the phone number to be called
+	 * @Override
 	 */
 	public void call(String number) {
 		System.out.println("Calling " + number + "...");
