@@ -4,6 +4,14 @@
 public class SmartPhone extends MobilePhone {
 
 	/**
+	 * Set brand in constructor.
+	 * @param brand the brand of the phone
+	 */
+	public SmartPhone(String brand) {
+		super(brand);
+	}
+
+	/**
 	 * Prints: "Calling <number>...".
 	 * Adds number to history and removes oldest number
 	 * @param number the phone number to be called

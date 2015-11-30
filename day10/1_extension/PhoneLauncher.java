@@ -5,7 +5,7 @@ public class PhoneLauncher {
 		launcher.launch();
 	}
 	public void launch() {
-		SmartPhone mob = new SmartPhone();
+		SmartPhone mob = new SmartPhone("NOKIA");
 		mob.call("1");
 		mob.call("2");
 		mob.call("3");
@@ -23,6 +23,7 @@ public class PhoneLauncher {
 		mob.ringAlarm("braying sheep");
 		mob.playGame("snake 2");
 		mob.call("001234");
+		System.out.println(mob.getBrand());
 	}
 
 }
