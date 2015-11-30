@@ -1,7 +1,7 @@
-public class Mammal extends Animal {
+public abstract class Mammal extends Animal {
 	
-	public Mammal(String name, String type) {
-		super(name, type);
+	public Mammal(String name, String type, String sound) {
+		super(name, type, sound);
 	}
 	
 	// @Override
@@ -11,6 +11,11 @@ public class Mammal extends Animal {
 	
 	public void giveBirth() {
 		System.out.println("A " + name + " is giving birth!");
+	}
+	
+	// @Override
+	public void makeSound() {
+		System.out.println("A " + name + " made a " + sound + "!");
 	}
 	
 }
