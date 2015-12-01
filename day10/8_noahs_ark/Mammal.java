@@ -1,7 +1,7 @@
-public abstract class Mammal extends Animal {
+public class Mammal extends Animal {
 	
-	public Mammal(String name, String type, String sound) {
-		super(name, type, sound);
+	public Mammal(String[] args) {
+		super(args[0], args[1], args[2]);
 	}
 	
 	// @Override
@@ -9,7 +9,7 @@ public abstract class Mammal extends Animal {
 		giveBirth();
 	}
 	
-	public void giveBirth() {
+	private void giveBirth() {
 		System.out.println("A " + name + " is giving birth!");
 	}
 	
