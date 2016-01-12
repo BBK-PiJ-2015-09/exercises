@@ -1,11 +1,11 @@
-public class Comparator<T extends Comparable<T>> {
-	public T getMax(T n, T m) {
-		if (n.compareTo(m) > 0) {
-			return n;
-		} else {
-			return m;
-		}
-	}
+public class Comparator {
+	// public T getMax(T n, T m) {
+	// 	if (n.compareTo(m) > 0) {
+	// 		return n;
+	// 	} else {
+	// 		return m;
+	// 	}
+	// }
 
 	// public int getMax(int n, int m) {
 	// 	if (n > m) {
@@ -32,4 +32,16 @@ public class Comparator<T extends Comparable<T>> {
 	// 		return number2;
 	// 	}
 	// }
+	
+	public int getMax(int n, int m) {
+			if (n > m) {
+				return n;
+			} else {
+				return m;
+			}
+		}
+		
+	public double getMax(double n, double m) {
+		return (double) getMax((int) n,(int) m);
+	}
 }

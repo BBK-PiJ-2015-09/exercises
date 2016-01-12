@@ -9,11 +9,11 @@ public class ComparatorTest {
 		// Comparator<String> stringComparator = new Comparator<>();
 		// System.out.println(stringComparator.getMax("5","6"));
 		
-		// or even unsafe... (throws error but compiles & runs)
+		// or even unsafe... (doesn't work with strings but this compiles & runs)
 		Comparator comparator = new Comparator();
 		System.out.println(comparator.getMax(5,6));
 		System.out.println(comparator.getMax(5.1,6.2));
-		System.out.println(comparator.getMax("5","6"));
+		// System.out.println(comparator.getMax("5","6"));
 		
 	}
 
