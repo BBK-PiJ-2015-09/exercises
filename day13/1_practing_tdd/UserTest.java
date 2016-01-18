@@ -13,10 +13,19 @@ public class UserTest {
 	
 	@Test
 	public void testsGetID() {
-		User user = new UserMock();
+		User user = new UserImpl("John Smith");
 		int output = user.getID();
 		int expected = 1234;
 		assertEquals(output, expected);
 	}
 	
+	@Test
+	public void testsGetLibrary() {
+		User user = new UserImpl("John Smith");
+		Library library = new LibraryMock();
+		user.register(library);
+		String output = user.getLibrary();
+		String expected = "Birkbeck Library";
+		assertEquals(output, expected);
+	}
 }

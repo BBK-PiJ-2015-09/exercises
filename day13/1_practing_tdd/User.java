@@ -15,4 +15,17 @@ public interface User {
 	 */		
 	public int getID();
 	
+	/**
+	 * Registers the user with a library.
+	 *
+	 * @param library the library to register with
+	 */	
+	public void register(Library library);
+	
+	/**
+	 * Returns the User's Library. 
+	 *
+	 * @return the User's Library
+	 */		
+	public String getLibrary();
 }

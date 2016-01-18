@@ -1,5 +1,6 @@
 public class UserImpl implements User {
 	private String name;
+	private Library library;
 	
 	public UserImpl(String name) {
 		this.name = name;
@@ -8,11 +9,20 @@ public class UserImpl implements User {
 	@Override
 	public String getName() {
 		return name;
-	};
+	}
 	
 	@Override
 	public int getID() {
-		return 0;
-	};
+		return library.getID();
+	}
+	
+	@Override
+	public void register(Library library) {
+	}
+	
+	@Override
+	public String getLibrary() {
+		return null;
+	}
 	
 }
