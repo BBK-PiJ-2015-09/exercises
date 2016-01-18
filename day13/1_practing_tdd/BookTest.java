@@ -25,5 +25,5 @@ public class BookTest {
 		String expected = "Gulliver's Travels";
 		assertEquals(output, expected);
 	}
-	
+
 }
