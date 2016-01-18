@@ -14,6 +14,8 @@ public class UserTest {
 	@Test
 	public void testsGetID() {
 		User user = new UserImpl("John Smith");
+		Library library = new LibraryMock();
+		user.register(library);
 		int output = user.getID();
 		int expected = 1234;
 		assertEquals(output, expected);
