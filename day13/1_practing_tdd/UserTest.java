@@ -8,7 +8,7 @@ public class UserTest {
 		User user = new UserImpl("John Smith");
 		String output = user.getName();
 		String expected = "John Smith";
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 	
 	@Test
@@ -18,7 +18,7 @@ public class UserTest {
 		user.register(library);
 		int output = user.getID();
 		int expected = 1234;
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 	
 	@Test
@@ -28,6 +28,6 @@ public class UserTest {
 		user.register(library);
 		String output = user.getLibrary();
 		String expected = "Birkbeck Library";
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 }

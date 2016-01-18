@@ -16,14 +16,14 @@ public class BookTest {
 	public void testsGetAuthor() {
 		String output = book.getAuthor();
 		String expected = "Jonathan Swift";
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 	
 	@Test
 	public void testsGetTitle() {
 		String output = book.getTitle();
 		String expected = "Gulliver's Travels";
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 
 }

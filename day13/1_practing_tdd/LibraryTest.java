@@ -8,7 +8,7 @@ public class LibraryTest {
 		Library library = new LibraryImpl("British Library");
 		String output = library.getName();
 		String expected = "British Library";
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 	
 	@Test
@@ -18,7 +18,7 @@ public class LibraryTest {
 		library.setMaxBooksPerUser(input);
 		int output = library.getMaxBooksPerUser();
 		int expected = input;
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class LibraryTest {
 		library.setMaxBooksPerUser(input);
 		int output = library.getMaxBooksPerUser();
 		int expected = 0;
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 
 	@Test
@@ -38,7 +38,7 @@ public class LibraryTest {
 		user1.register(library);
 		int output = library.getID(user1.getName());
 		int expected = 1;
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 		
 		// once set, ID should remain the same
 		output = library.getID(user1.getName());
@@ -49,16 +49,16 @@ public class LibraryTest {
 		user2.register(library);
 		output = library.getID(user2.getName());
 		expected = 2;
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 
 		// once set, ID should remain the same
 		output = library.getID(user1.getName());
 		expected = 1;
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 
 		// once set, ID should remain the same
 		expected = 2;
 		output = library.getID(user2.getName());
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 	}
 }
