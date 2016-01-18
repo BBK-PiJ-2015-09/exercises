@@ -8,7 +8,7 @@ public class LibraryMock implements Library {
 		return 1234;
 	}
 	
-	public void setMaxBooksPerUser(int max) {
+	public void setMaxBooksPerUser(int maxBooks) {
 	}
 
 	public int getMaxBooksPerUser() {

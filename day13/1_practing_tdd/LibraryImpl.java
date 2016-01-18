@@ -1,4 +1,6 @@
 public class LibraryImpl implements Library {
+	private String name;
+	private int maxBooks;
 	
 	/**
 	 * Constructor
@@ -6,12 +8,12 @@ public class LibraryImpl implements Library {
 	 * @param the Library's name
 	 */
 	public LibraryImpl(String name) {
-		
+		this.name = name;
 	}
 	
 	@Override
 	public String getName() {
-		return "";
+		return name;
 	}
 	
 	@Override
@@ -20,13 +22,17 @@ public class LibraryImpl implements Library {
 	}
 
 	@Override
-	public void setMaxBooksPerUser(int max) {
-	
+	public void setMaxBooksPerUser(int maxBooks) {
+		if (maxBooks < 0) {
+			this.maxBooks = 0;
+		} else {
+			this.maxBooks = maxBooks;
+		}
 	}
 	
 	@Override
 	public int getMaxBooksPerUser() {
-		return 9999;
+		return maxBooks;
 	}
 	
 }

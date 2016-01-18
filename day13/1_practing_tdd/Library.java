@@ -19,7 +19,7 @@ public interface Library {
 	 *
 	 * @param max the max number of books per user
 	 */
-	public void setMaxBooksPerUser(int max);	
+	public void setMaxBooksPerUser(int maxBooks);	
 	
 	/**
 	 * Get the maximum number of books any user can take out.
