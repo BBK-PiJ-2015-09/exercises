@@ -14,4 +14,18 @@ public interface Library {
 	 */
 	public int getID();
 	
+	/**
+	 * Set the maximum number of books any user can take out.
+	 *
+	 * @param max the max number of books per user
+	 */
+	public void setMaxBooksPerUser(int max);	
+	
+	/**
+	 * Get the maximum number of books any user can take out.
+	 *
+	 * @return the max number of books per user
+	 */
+	public int getMaxBooksPerUser();
+	
 }

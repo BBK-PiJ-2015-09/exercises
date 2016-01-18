@@ -3,6 +3,11 @@ public class UserImpl implements User {
 	private Library library;
 	private int id;
 	
+	/**
+	 * Constructor
+	 *
+	 * @param the User's name
+	 */
 	public UserImpl(String name) {
 		this.name = name;
 	}
