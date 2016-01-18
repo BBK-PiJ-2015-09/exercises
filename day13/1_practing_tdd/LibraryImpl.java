@@ -20,17 +20,24 @@ public class LibraryImpl implements Library {
 	
 	@Override
 	public int getID(String username) {
+		if (maxID == 0) {
+			return setUsername(maxID, username);
+		}
 		int id = alreadyRegistered(username);
-		if (id > 0) {
+		if (id > -1) {
 			return id;
 		} else {
-			if (maxID == usernames.length) {
+			if (maxID == usernames.length - 1) {
 				expandUsernames();
 			}
-			maxID++;
-			usernames[maxID] = username;
-			return maxID;
+			return setUsername(maxID, username);
 		}
+	}
+
+	private int setUsername(int id, String name) {
+		usernames[id] = name;
+		maxID++;
+		return id;
 	}
 
 	@Override
@@ -48,9 +55,9 @@ public class LibraryImpl implements Library {
 	}
 
 	private int alreadyRegistered(String username) {
-		int id = 0;
-		for (int i = 0; i <= maxID && id == 0; i++) {
-			if (usernames[i] == username) {
+		int id = -1;
+		for (int i = 0; i < maxID; i++) {
+			if (usernames[i].equals(username)) {
 				id = i;
 			}
 		}
