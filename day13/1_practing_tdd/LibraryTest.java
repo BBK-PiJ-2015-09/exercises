@@ -42,7 +42,7 @@ public class LibraryTest {
 		
 		// once set, ID should remain the same
 		output = library.getID(user1.getName());
-		assertEquals(output, expected);
+		assertEquals(expected, output);
 		
 		// new user should get unique ID
 		User user2 = new UserImpl("Janet Bobbins");
@@ -50,12 +50,12 @@ public class LibraryTest {
 		output = library.getID(user2.getName());
 		expected = 2;
 		assertEquals(output, expected);
-		
+
 		// once set, ID should remain the same
 		output = library.getID(user1.getName());
 		expected = 1;
 		assertEquals(output, expected);
-		
+
 		// once set, ID should remain the same
 		expected = 2;
 		output = library.getID(user2.getName());
