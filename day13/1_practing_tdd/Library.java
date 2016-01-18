@@ -8,11 +8,11 @@ public interface Library {
 	public String getName();
 	
 	/**
-	 * Returns a unique ID for a new user.
+	 * Returns a new unique ID for a new user, or the existing unique ID for the user.
 	 *
-	 * @return a unique ID
+	 * @return a unique ID for the given user
 	 */
-	public int getID();
+	public int getID(String username);
 	
 	/**
 	 * Set the maximum number of books any user can take out.

@@ -17,7 +17,7 @@ public class LibraryImpl implements Library {
 	}
 	
 	@Override
-	public int getID() {
+	public int getID(String username) {
 		return 0;
 	}
 

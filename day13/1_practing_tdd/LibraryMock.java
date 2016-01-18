@@ -4,7 +4,7 @@ public class LibraryMock implements Library {
 		return "Birkbeck Library";
 	}
 	
-	public int getID() {
+	public int getID(String username) {
 		return 1234;
 	}
 	

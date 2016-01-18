@@ -31,4 +31,34 @@ public class LibraryTest {
 		assertEquals(output, expected);
 	}
 
+	@Test
+	public void testsGetID() {
+		Library library = new LibraryImpl("British Library");
+		User user1 = new UserImpl("John Smith");
+		user1.register(library);
+		int output = library.getID(user1.getName());
+		int expected = 1;
+		assertEquals(output, expected);
+		
+		// once set, ID should remain the same
+		output = library.getID(user1.getName());
+		assertEquals(output, expected);
+		
+		// new user should get unique ID
+		User user2 = new UserImpl("Janet Bobbins");
+		user2.register(library);
+		output = library.getID(user2.getName());
+		expected = 2;
+		assertEquals(output, expected);
+		
+		// once set, ID should remain the same
+		output = library.getID(user1.getName());
+		expected = 1;
+		assertEquals(output, expected);
+		
+		// once set, ID should remain the same
+		expected = 2;
+		output = library.getID(user2.getName());
+		assertEquals(output, expected);
+	}
 }
