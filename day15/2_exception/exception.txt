@@ -1,0 +1,1 @@
+This code will catch all Exceptions in line 6, therefore the catch beneath it on line 9 will never be reached.
