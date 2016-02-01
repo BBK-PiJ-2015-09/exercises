@@ -16,7 +16,7 @@ public class PrimeDivisorListTest {
 	public void testsAdd() {
 		primes.add(3);
 		String output = primes.toString();
-		String expected = "[3]";
+		String expected = "[ 3 ]";
 		assertEquals(expected, output);
 	}
 
@@ -32,12 +32,32 @@ public class PrimeDivisorListTest {
 
 	@Test
 	public void testsRemove() {
-
+		primes.add(3);
+		primes.add(5);
+		primes.remove(3);
+		String output = primes.toString();
+		String expected = "[ 5 ]";
+		assertEquals(expected, output);
 	}
 
 	@Test
 	public void testsToString() {
+		primes.add(7);
+		primes.add(3);
+		String output = primes.toString();
+		String expected = "[ 3 * 7 = 21 ]";
+		assertEquals(expected, output);
+	}
 
+	@Test
+	public void testsToStringComplex() {
+		primes.add(2);
+		primes.add(3);
+		primes.add(3);
+		primes.add(7);
+		String output = primes.toString();
+		String expected = "[ 2 * 3^2 * 7 = 126 ]";
+		assertEquals(expected, output);
 	}
 
 }
