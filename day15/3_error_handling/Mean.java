@@ -18,6 +18,7 @@ public class Mean {
 	}
 
 	public static int toInt(String input) {
+		// bad. shouldn't do loops with tries in them, should do a checking loop and then throw the exception if it's not an int.
 		try {
 			return Integer.parseInt(input);
 		} catch (NumberFormatException ex) {
