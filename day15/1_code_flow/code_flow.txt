@@ -1,0 +1,80 @@
+- userInput is 0
+	01
+	02
+	03
+	04
+	05
+	06
+	07
+	08
+	09
+	10 - remove 1
+	11 - println 2
+	12 - remove 2
+	13 - println 3
+	14 - remove 3
+	15 - println 4
+	16 - remove 4
+	17 - println 5
+	18 - remove 5
+	19 - println 6
+	20 - remove 6
+	21 - get null, exception
+	24
+	25 - printStackTrace()
+
+
+- userInput is 2
+	01
+	02
+	03
+	04
+	05
+	06
+	07
+	08
+	09
+	10 - remove 1
+	11 - println 4
+	12 - remove 2
+	13 - println 5
+	14 - remove 3
+	15 - println 6
+	16 - remove 4
+	17 - println out of bounds, exception
+	24
+	25 - printStackTrace()
+
+
+- userInput is 4
+	01
+	02
+	03
+	04
+	05
+	06
+	07
+	08
+	09
+	10 - remove 1
+	11 - println 6
+	12 - remove 2
+	13 - println out of bounds, exception
+	24
+	25 - printStackTrace()
+
+
+- userInput is 6
+	01
+	02
+	03
+	04
+	05
+	06
+	07
+	08
+	09
+	10 - remove 1
+	11 - println out of bounds, exception
+	24
+	25 - printStackTrace()
