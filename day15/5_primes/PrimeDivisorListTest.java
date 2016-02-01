@@ -20,4 +20,8 @@ public class PrimeDivisorListTest {
 		assertEquals(expected, output);
 	}
 
+	@Test(expected = Exception.class)
+	public void testsAddNonPrime() {
+		primes.add(4);
+	}
 }

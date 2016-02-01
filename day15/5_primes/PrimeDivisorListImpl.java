@@ -1,7 +1,15 @@
+import java.util.*;
+
 public class PrimeDivisorListImpl implements PrimeDivisorList {
+	private List<Integer> primes = new ArrayList<Integer>();
 
 	@Override
-	public void add(Integer integer) {
+	public void add(Integer integer) throws IllegalArgumentException {
+		if (isPrime(integer)) {
+			primes.add(integer);
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	@Override
@@ -10,7 +18,19 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 
 	@Override
 	public String toString() {
-		return null;
+		return primes.toString();
+	}
+
+	private boolean isPrime(Integer number) {
+		Integer divisor = number - 1;
+		boolean prime = true;
+		while (divisor > 1) {
+			if(number % divisor == 0) {
+				prime = false;
+			}
+			divisor--;
+		}
+		return prime;
 	}
 
 }
