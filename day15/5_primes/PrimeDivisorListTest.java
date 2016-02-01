@@ -20,8 +20,24 @@ public class PrimeDivisorListTest {
 		assertEquals(expected, output);
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testsAddNonPrime() {
 		primes.add(4);
 	}
+
+	@Test(expected = NullPointerException.class)
+	public void testsAddNull() {
+		primes.add(null);
+	}
+
+	@Test
+	public void testsRemove() {
+
+	}
+
+	@Test
+	public void testsToString() {
+
+	}
+
 }

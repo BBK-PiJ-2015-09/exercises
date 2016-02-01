@@ -4,8 +4,10 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 	private List<Integer> primes = new ArrayList<Integer>();
 
 	@Override
-	public void add(Integer integer) throws IllegalArgumentException {
-		if (isPrime(integer)) {
+	public void add(Integer integer) throws NullPointerException, IllegalArgumentException {
+		if (integer == null) {
+			throw new NullPointerException();
+		} else if (isPrime(integer)) {
 			primes.add(integer);
 		} else {
 			throw new IllegalArgumentException();
