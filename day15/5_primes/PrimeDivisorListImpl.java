@@ -7,6 +7,8 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 	public void add(Integer integer) throws NullPointerException, IllegalArgumentException {
 		if (integer == null) {
 			throw new NullPointerException();
+		} else if (integer < 0) {
+			throw new IllegalArgumentException();
 		} else if (isPrime(integer)) {
 			primes.add(integer);
 		} else {

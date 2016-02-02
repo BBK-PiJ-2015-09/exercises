@@ -25,6 +25,11 @@ public class PrimeDivisorListTest {
 		primes.add(4);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testsAddNegative() {
+		primes.add(-3);
+	}
+
 	@Test(expected = NullPointerException.class)
 	public void testsAddNull() {
 		primes.add(null);
@@ -57,6 +62,20 @@ public class PrimeDivisorListTest {
 		primes.add(7);
 		String output = primes.toString();
 		String expected = "[ 2 * 3^2 * 7 = 126 ]";
+		assertEquals(expected, output);
+	}
+
+	@Test
+	public void testsToStringLarge() {
+		primes.add(2);
+		primes.add(3);
+		primes.add(3);
+		primes.add(3);
+		primes.add(5);
+		primes.add(7);
+		primes.add(239);
+		String output = primes.toString();
+		String expected = "[ 2 * 3^3 * 5 * 7 * 239 = 451710 ]";
 		assertEquals(expected, output);
 	}
 
