@@ -23,9 +23,16 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 	@Override
 	public String toString() {
 		String string = "";
+		int prime;
 		for(int i = 0; i < primes.size(); i++) {
-			string += primes.get(i);
-			if (primes.size() > 1 && i < primes.size()-1) {
+			prime = primes.get(i);
+			if (countOf(prime) > 1) {
+				string += prime + "^" + countOf(prime);
+				i += countOf(prime) - 1;
+			} else {
+				string += prime;
+			}
+			if (primes.size() > 1 && i < primes.size() - 1) {
 				string += " * ";
 			}
 		}
@@ -34,6 +41,16 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 			string += product();
 		}
 		return "[ " + string + " ]";
+	}
+
+	private int countOf(Integer number) {
+		int count = 0;
+		for(int i = 0; i < primes.size(); i++) {
+			if (primes.get(i) == number) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	private boolean isPrime(Integer number) {
@@ -49,11 +66,11 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 	}
 
 	private int product() {
-		int total = 1;
+		int accumulator = 1;
 		for(int i = 0; i < primes.size(); i++) {
-			total *= primes.get(i);
+			accumulator *= primes.get(i);
 		}
-		return total;
+		return accumulator;
 	}
 
 }
