@@ -12,15 +12,28 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 		} else {
 			throw new IllegalArgumentException();
 		}
+		Collections.sort(primes);
 	}
 
 	@Override
 	public void remove(int index) {
+		primes.remove(index);
 	}
 
 	@Override
 	public String toString() {
-		return primes.toString();
+		String string = "";
+		for(int i = 0; i < primes.size(); i++) {
+			string += primes.get(i);
+			if (primes.size() > 1 && i < primes.size()-1) {
+				string += " * ";
+			}
+		}
+		if (primes.size() > 1) {
+			string += " = ";
+			string += product();
+		}
+		return "[ " + string + " ]";
 	}
 
 	private boolean isPrime(Integer number) {
@@ -33,6 +46,14 @@ public class PrimeDivisorListImpl implements PrimeDivisorList {
 			divisor--;
 		}
 		return prime;
+	}
+
+	private int product() {
+		int total = 1;
+		for(int i = 0; i < primes.size(); i++) {
+			total *= primes.get(i);
+		}
+		return total;
 	}
 
 }

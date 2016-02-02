@@ -34,7 +34,7 @@ public class PrimeDivisorListTest {
 	public void testsRemove() {
 		primes.add(3);
 		primes.add(5);
-		primes.remove(3);
+		primes.remove(0);
 		String output = primes.toString();
 		String expected = "[ 5 ]";
 		assertEquals(expected, output);
