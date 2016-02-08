@@ -9,7 +9,6 @@ public class PrintFile {
 	public static void main(String[] args) {
 		System.out.print("Please enter the full filename: ");
 		String filename = System.console().readLine();
-		File file = new File("file.csv");
 		try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
 			String line;
 			while((line = in.readLine()) != null) {
