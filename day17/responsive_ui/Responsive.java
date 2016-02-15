@@ -9,7 +9,7 @@ public class Responsive implements Runnable {
 
 	public static void main(String[] args) {
 		Thread[] threads = new Thread[10];
-		String feedback = "";
+
 		for(int i = 0; i < 10; i++) {
 			System.out.print("Enter the duration (in ms) of task " + i + ": ");
 			String duration = System.console().readLine();
@@ -18,6 +18,7 @@ public class Responsive implements Runnable {
 			Thread thread = new Thread(responsive);
 			thread.start();
 			threads[i] = thread;
+			String feedback = "";
 			for(int j =0; j < threads.length; j++){
 				if((threads[j]!= null) && !threads[j].isAlive()){
 					feedback = feedback + j + ", ";
