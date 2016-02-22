@@ -4,10 +4,12 @@
 public class WaitingTask implements Runnable {
 	private int taskId;
 	private int delay;
+	private CompletedTaskCollector collector;
 
-	public WaitingTask(int taskId, int delay) {
+	public WaitingTask(int taskId, int delay, CompletedTaskCollector collector) {
 		this.taskId = taskId;
 		this.delay = delay;
+		this.collector = collector;
 	}
 
 	public void run() {
@@ -17,6 +19,7 @@ public class WaitingTask implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		collector.addCompletedTask(taskId);
 	}
 
 }
