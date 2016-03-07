@@ -39,6 +39,18 @@ public class StreamDemo {
 			.filter(e -> e.length() < 4)
 			.filter(e -> e.contains("Q"))
 			.forEach(System.out::println);
+
+
+		System.out.println("\nQuestion 6:");
+		words.stream()
+			.map(e -> toUpper(e))
+			.filter(e -> e.length() < 4)
+			.filter(e -> e.contains("E"))
+			.forEach(System.out::println);
 	}
 
+	public static String toUpper(String in) {
+		System.out.println(in);
+		return in.toUpperCase();
+	}
 }
