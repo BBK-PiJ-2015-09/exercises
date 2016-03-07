@@ -41,7 +41,6 @@ public class StreamDemo {
 			.filter(e -> e.contains("Q"))
 			.forEach(System.out::println);
 
-
 		System.out.println("\nQuestion 6:");
 		words.stream()
 			.map(e -> toUpper(e))
@@ -65,10 +64,23 @@ public class StreamDemo {
 			.collect(Collectors.joining(", "));
 		System.out.println(withCommas);
 
+		System.out.println("\nQuestion 10:");
+		System.out.println(randomNumberList(10));
+
+
 	}
 
 	public static String toUpper(String in) {
 		System.out.println(in);
 		return in.toUpperCase();
+	}
+
+	public static List<Double> randomNumberList(int size) {
+		List<Double> list = new ArrayList<>();
+		Random random = new Random();
+		random.doubles()
+			.limit(size)
+			.forEach(list::add);
+		return list;
 	}
 }
