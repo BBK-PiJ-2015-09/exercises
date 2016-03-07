@@ -71,7 +71,10 @@ public class StreamDemo {
 		System.out.println(orderedNumberList(50, 5, 20));
 
 		System.out.println("\nQuestion 12:");
-		System.out.println(sum(orderedNumberList(50, 5, 20)));
+		System.out.println(sum(orderedNumberList(50, 5, 400)));
+
+		System.out.println("\nQuestion 13:");
+		System.out.println(sum(orderedNumberList(50, 5, 400)));
 	}
 
 	public static String toUpper(String in) {
@@ -97,7 +100,7 @@ public class StreamDemo {
 	}
 
 	public static int sum(List<Integer> ints) {
-		return ints.stream().reduce(Integer::sum).get();
+		return ints.stream().parallel().reduce(Integer::sum).get();
 	}
 
 }
