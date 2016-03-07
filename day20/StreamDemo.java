@@ -78,6 +78,10 @@ public class StreamDemo {
 			sumParallel(orderedNumberList(50, 5, 400)) == sum(orderedNumberList(50, 5, 400))
 		);
 
+		System.out.println("\nQuestion 14:");
+		List<Double> list = orderedDoubleList(-10, 6, 30);
+		System.out.println(product(list));
+		System.out.println(productParallel(list));
 	}
 
 	public static String toUpper(String in) {
@@ -102,12 +106,28 @@ public class StreamDemo {
 		return list;
 	}
 
+	public static List<Double> orderedDoubleList(int start, int step, int max) {
+		List<Double> list = new ArrayList<>();
+		DoubleStream.iterate(start, i -> i + step)
+			.limit(max)
+			.forEach(list::add);
+		return list;
+	}
+
 	public static int sum(List<Integer> ints) {
 		return ints.stream().reduce(Integer::sum).get();
 	}
 
 	public static int sumParallel(List<Integer> ints) {
 		return ints.stream().parallel().reduce(Integer::sum).get();
+	}
+
+	public static double product(List<Double> doubles) {
+		return doubles.stream().reduce(1.0, (a, b) -> a * b);
+	}
+
+	public static double productParallel(List<Double> doubles) {
+		return doubles.stream().parallel().reduce(1.0, (a, b) -> a * b);
 	}
 
 }
