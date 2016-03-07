@@ -47,6 +47,12 @@ public class StreamDemo {
 			.filter(e -> e.length() < 4)
 			.filter(e -> e.contains("E"))
 			.forEach(System.out::println);
+
+		System.out.println("\nQuestion 7:");
+		String wordsUpcase = words.stream()
+			.reduce("", (o, e) -> o + e.toUpperCase());
+		System.out.println(wordsUpcase);
+
 	}
 
 	public static String toUpper(String in) {
