@@ -53,6 +53,12 @@ public class StreamDemo {
 			.reduce("", (o, e) -> o + e.toUpperCase());
 		System.out.println(wordsUpcase);
 
+		System.out.println("\nQuestion 8:");
+		String wordsUpcase2 = words.stream()
+			.map(String::toUpperCase)
+			.reduce("", (o, e) -> o + e);
+		System.out.println(wordsUpcase2);
+
 	}
 
 	public static String toUpper(String in) {
