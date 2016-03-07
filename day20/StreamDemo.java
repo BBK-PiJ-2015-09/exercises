@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.*;
+import java.util.StringJoiner;
 
 public class StreamDemo {
 
@@ -58,6 +59,11 @@ public class StreamDemo {
 			.map(String::toUpperCase)
 			.reduce("", (o, e) -> o + e);
 		System.out.println(wordsUpcase2);
+
+		System.out.println("\nQuestion 9:");
+		String withCommas = words.stream()
+			.collect(Collectors.joining(", "));
+		System.out.println(withCommas);
 
 	}
 
