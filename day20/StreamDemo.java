@@ -67,7 +67,8 @@ public class StreamDemo {
 		System.out.println("\nQuestion 10:");
 		System.out.println(randomNumberList(10));
 
-
+		System.out.println("\nQuestion 11:");
+		System.out.println(orderedNumberList(50, 5, 20));
 	}
 
 	public static String toUpper(String in) {
@@ -80,6 +81,14 @@ public class StreamDemo {
 		Random random = new Random();
 		random.doubles()
 			.limit(size)
+			.forEach(list::add);
+		return list;
+	}
+
+	public static List<Integer> orderedNumberList(int start, int step, int max) {
+		List<Integer> list = new ArrayList<>();
+		IntStream.iterate(start, i -> i + step)
+			.limit(max)
 			.forEach(list::add);
 		return list;
 	}
